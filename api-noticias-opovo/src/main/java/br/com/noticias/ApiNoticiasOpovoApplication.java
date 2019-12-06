@@ -1,4 +1,4 @@
-package br.com.noticias.api;
+package br.com.noticias;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
