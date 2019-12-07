@@ -19,11 +19,10 @@ app.controller("listaDeNoticiasCtrl",function($scope,NoticiaService,$http) {
 	
 	$scope.salvar = function(noticia) {			
 		NoticiaService.salvar(noticia).then($scope.listar);		
-		//delete $scope.noticia;
 	};
 	
 	$scope.deletar = function(noticia) {		
-		if(confirm("Deseja Excluir?")) {
+		if(confirm("Deseja Excluir a Notícia?")) {
 			NoticiaService.deletar(noticia).then($scope.listar);
 		}
 	};
