@@ -13,17 +13,17 @@
      SCM URL: git <url>
      clique em finish e esperar alguns segundos.
  
- 2 - Executar o Sistema
+ 2 - Executar o Sistema:
      segure Ctrl+Alt + t
      surgirá uma janela, digite:
-     ApiNoticiasOpovoApplication
+     ApiNoticiasOpovoApplication, clique nele e
      agora basta clicar com o botão
      direito, RUN AS -> Java Application
-     e os sitemas pode ser testado.
+     e os sistemas pode ser testado.
      O JPA criará o banco automaticamente
      para o uso.
   
-  3 - Interação no Navegador
+  3 - Interação no Navegador:
       No browser digite:
       http://localhost:8080/home
       agora é só cadastrar as notícias
@@ -31,7 +31,7 @@
       novo cadastro. Tudo pode é feito em
       apenas uma página(SPA).
       
-   4- Acessando banco de dados H2 - opcional
+   4- Acessando banco de dados H2 - opcional:
       Caso queira acessar o banco e 
       ver as modificações digite no
       navegador:
@@ -39,7 +39,7 @@
       e em JDBC URL:jdbc:h2:mem:noticiadb
       acrecente o datasoure acima;
    
-   5 - Requisições no Postman
+   5 - Requisições no Postman:
      POST - http://localhost:8080/noticias/ 
      GET  -  http://localhost:8080/noticias/ 
      GET  -  http://localhost:8080/noticias/{id} 
