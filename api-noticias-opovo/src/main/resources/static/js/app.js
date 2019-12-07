@@ -1,13 +1,14 @@
 var app = angular.module("listaDeContatos",['ngMask','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
-app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http ,$filter) {
+app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http) {
 	
-	$scope.app = "Lista Telefônica";	
-	$scope.contatos = [];
+	$scope.app = "Notícias;	
+	$scope.contatos=[];
 	
 	$scope.listar = function() {
-		ContatoService.listar().then(function (response) {
-			 $scope.contatos = response.data.contato;			
+		ContatoService.lista().then(function (response) {
+			 $scope.contatos = response.data;
+			 console.log(response.data);
 			 $scope.totalItems = $scope.contatos.length;					
 		});
 	}
@@ -41,7 +42,7 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http ,$filt
 
 app.service("ContatoService",function($http) {
 	
-	this.listar = function() {
+	this.lista = function() {
 		return $http.get("http://localhost:8080/noticias");		
 	};
 	
