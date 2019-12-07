@@ -17,6 +17,7 @@ public class NoticiaService {
 	private NoticiaRepository repo;
 	
 	public List<Noticia> listar(){
+		
 		return repo.findAll();
 	}
     public Noticia salvar(Noticia Noticia) {
