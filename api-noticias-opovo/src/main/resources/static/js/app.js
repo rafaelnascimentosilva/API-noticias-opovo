@@ -29,7 +29,7 @@ app.controller("listaDeNoticiasCtrl",function($scope,NoticiaService,$http) {
 	
 	$scope.editar = function(noticia) {	
 		$scope.noticia = angular.copy(noticia); 
-		$scope.noticia.nascimento = $filter("date")($scope.noticia.nascimento,"dd/MM/yyyy");
+		$scope.noticia._data= ($scope.noticia._data,"dd/MM/yyyy");
 	};
 	
 	$scope.paginar = function(limit,attr) {		
