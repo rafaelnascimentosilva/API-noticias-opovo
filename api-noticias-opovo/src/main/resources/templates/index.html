@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="listaDeContatos">
+<html ng-app="listaDeNoticias">
 <head>
 
 <meta charset="utf-8">
@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="imagens/faviconAngular.png">
 </head>
 
-<body ng-controller="listaDeContatosCtrl" ng-init="listar()">
+<body ng-controller="listaDeNoticiasCtrl" ng-init="listar()">
 
 	<div class="jumbotron">
 		<div class="container">
@@ -37,18 +37,21 @@
 			<div class="table-responsive ">
 					<table class="table table-striped table-bordered table-hover">
 				<tr>
-					<th>Nome</th>
-					<th>Telefone</th>
-					<th>Aniversário</th>
-					<th>Ações</th>
+					<th>Titulo</th>
+					<th>Noticia</th>
+					<th>Autor</th>
+					<th>Data</th>
 				</tr>
-				<tr ng-repeat="contato in contatos| filter:minhaBusca | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize"> 						
-						<td> {{contato.id}} </td>
-						<td> {{contato.titulo}} </td>
-					 	<td> {{contato.noticia| date: "dd/MM/yyyy"}} </td>
+				<tr ng-repeat="noticia in noticias| filter:minhaBusca | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize"> 						
+						
+						<td> {{noticia.titulo}} </td>
+						<td> {{noticia.noticia}} </td>
+						<td> {{noticia.autor}} </td>
+					 	<td> {{noticia.data| date: "dd/MM/yyyy"}} </td>
+					 	
 						<td>						
-							<a href="" ng-click="editar(contato)" data-toggle="modal" data-target="#atualizaContato" >  <span class="glyphicon-pencil text-warning "></span></a>
-							<a href="" ng-click="deletar(contato)" >  <span class="glyphicon glyphicon-trash text-danger"></span>	</a>
+							<a href="" ng-click="editar(noticia)" data-toggle="modal" data-target="#atualizaNoticia" >  <span class="glyphicon-pencil text-warning "></span></a>
+							<a href="" ng-click="deletar(noticia)" >  <span class="glyphicon glyphicon-trash text-danger"></span>	</a>
 						</td>			
 				</tr>
 			</table>
@@ -60,13 +63,13 @@
 
 			<div>
 				<button ng-click="novo()" class="btn btn-primary btn-block"
-					data-toggle="modal" data-target="#novoContato">Novo</button>
+					data-toggle="modal" data-target="#novaNoticia">Nova Notícia</button>
 			</div>
 
 		</div>
 		<!-- close container -->
 
-		<div class="modal fade" id="novoContato">
+		<div class="modal fade" id="novaNoticia">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div>
@@ -82,25 +85,32 @@
 									<div class="form-group col-xs-12">
 										<div class="input-group">
 
-											<label for="nome"> Nome:</label> <input id="nome" name="nome"
-												type="text" ng-model="noticia.nome"
-												placeholder="entre com nome" class="form-control"> <br>
+											<label for="titulo"> Título:</label> 
+											<input id="titulo" name="titulo" type="text" ng-model="noticia.titulo"
+											 	   placeholder="entre com título" 
+											 	   class="form-control"> <br>
 
-											<label for="fone"> Fone:</label> <input id="fone" name="fone"
-												type="text" ng-model="noticia.fone"
-												placeholder="entre com fone " mask="(99) 9999-9999"
-												class="form-control"> <br> <label
-												for="nascimento"> Nascimento:</label> <input id="nascimento"
-												name="nascimento" type="text" ng-model="noticia.nascimento"
-												placeholder="entre com data" mask='39/19/9999'
-												class="form-control"> <br>
+											<label for="noticia"> Notícia:</label>
+											<input id="noticia" name="noticia" type="text" ng-model="noticia.noticia"
+													placeholder="entre com a noticia " 
+													class="form-control"> <br> 
+													
+											<label for="autor"> Autor:</label>
+											<input id="autor" name="autor" type="text" ng-model="noticia.autor"
+													placeholder="entre com o autor " 
+													class="form-control"> <br> 
+											
+											<label for="data"> Data Notícia:</label> 
+											<input id="data"	name="data" type="text" ng-model="noticia.data"
+													placeholder="entre com a data" mask='39/19/9999'
+													class="form-control"> <br>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-primary" data-backdrop="static"
-									data-toggle="modal" data-target="#novoContato"
+									data-toggle="modal" data-target="#novaNoticia"
 									ng-click="salvar(noticia)">Salvar</button>
 							</div>
 						</form>
@@ -110,7 +120,7 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="atualizaContato">
+		<div class="modal fade" id="atualizaNoticia">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div>
@@ -126,25 +136,33 @@
 									<div class="form-group col-xs-12">
 										<div class="input-group">
 
-											<label for="nome"> Nome:</label> <input id="nome" name="nome"
-												type="text" ng-model="noticia.nome"
-												placeholder="entre com nome" class="form-control"> <br>
+										
+											<label for="titulo"> Título:</label> 
+											<input id="titulo" name="titulo" type="text" ng-model="noticia.titulo"
+											 	   placeholder="entre com título" 
+											 	   class="form-control"> <br>
 
-											<label for="fone"> Fone:</label> <input id="fone" name="fone"
-												type="text" ng-model="noticia.fone"
-												placeholder="entre com fone " mask="(99) 9999-9999"
-												class="form-control"> <br> <label
-												for="nascimento"> Nascimento:</label> <input id="nascimento"
-												name="nascimento" type="text" ng-model="noticia.nascimento"
-												placeholder="entre com data" mask='39/19/9999'
-												class="form-control"> <br>
+											<label for="noticia"> Notícia:</label>
+											<input id="noticia" name="noticia" type="text" ng-model="noticia.noticia"
+													placeholder="entre com a noticia " 
+													class="form-control"> <br> 
+													
+											<label for="autor"> Autor:</label>
+											<input id="autor" name="autor" type="text" ng-model="noticia.autor"
+													placeholder="entre com o autor " 
+													class="form-control"> <br> 
+											
+											<label for="data"> Data Notícia:</label> 
+											<input id="data"	name="data" type="text" ng-model="noticia.data"
+													placeholder="entre com a data" mask='39/19/9999'
+													class="form-control"> <br>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-primary" data-backdrop="static"
-									data-toggle="modal" data-target="#atualizaContato"
+									data-toggle="modal" data-target="#atualizaNoticia"
 									ng-click="salvar(noticia)">Confirmar</button>
 							</div>
 						</form>
