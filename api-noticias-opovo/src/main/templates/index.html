@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>noticia Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>noticia List</h1>
+    <a href="/new">Create New noticia</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>noticia ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made In</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="noticia: ${listaNoticias}">
+                <td th:text="${noticia.id}">noticia ID</td>
+                <td th:text="${noticia.titulo}">Name</td>
+                <td th:text="${noticia.noticia}">Brand</td>
+                <td th:text="${noticia.data}">Made in</td>
+                <td th:text="${noticia.autor}">Price</td>
+                <td>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
