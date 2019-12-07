@@ -30,4 +30,17 @@ public class NoticiaService {
     public void remover(long id) {
         repo.deleteById(id);
     }
+    public Noticia atualizar(long id, Noticia noticia) {
+    	Noticia obj = repo.getOne(id);
+    	updateData(obj,noticia);
+		return noticia;
+    	
+    }
+	private void updateData(Noticia obj, Noticia noticia) {
+		obj.setTitulo(noticia.getTitulo());
+		obj.setNoticia(noticia.getNoticia());
+		obj.setData(noticia.getData());
+		obj.setAutor(noticia.getAutor());
+		
+	}
 }
